@@ -11,7 +11,8 @@ class TestList(unittest.TestCase):
 
   def test_pop(self):
     arr = [1, 2, 3, 4]
-    arr.pop(1)
+    test = arr.pop(1)
+    self.assertEqual(test, 2)
     self.assertEqual(arr, [1, 3, 4])
 
   def test_append(self):
@@ -65,3 +66,20 @@ class TestList(unittest.TestCase):
   def test_slice(self):
     arr = [2,3,4,5,6]
     self.assertEqual(arr[2:4], [4,5])
+
+  def test_get_3_first_elements(self):
+    arr = [2,3,4,5,6]
+    self.assertEqual(arr[:3], [2,3,4])
+
+  def test_remove_3_first_elements(self):
+    arr = [2,3,4,5,6]
+    self.assertEqual(arr[3:], [5,6])
+
+  def test_sum(self):
+    arr = [2,3,4,5,6]
+    self.assertEqual(sum(arr), 20)
+
+class TestListComprehension(unittest.TestCase):
+  def test_square(self):
+    square = [x**2 for x in range(5)]
+    self.assertEqual(square, [0,1,4,9,16])
