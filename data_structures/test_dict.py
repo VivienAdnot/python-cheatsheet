@@ -5,6 +5,32 @@ class TestDict(unittest.TestCase):
   def setUp(self):
     self.my_dict = { 'foo': 'bar', 'bazob': 'boom' }
 
+  def test_loop_keys(self):
+    keys = []
+    for key in self.my_dict:
+      keys.append(key)
+    self.assertEqual(keys, ['foo', 'bazob'])
+
+  def test_loop_keys_values(self):
+    result = []
+    for key in self.my_dict:
+      result.append((key, self.my_dict[key]))
+    self.assertEqual(result, [('foo', 'bar'), ('bazob', 'boom')])
+
+  # loop over keys and values
+  def test_loop_entries(self):
+    entries = []
+    for key,value in self.my_dict.items():
+      entries.append((key,value))
+    self.assertEqual(entries, [('foo', 'bar'), ('bazob', 'boom')])
+
+# loop over values
+  def test_loop_values(self):
+    values = []
+    for value in self.my_dict.values():
+      values.append(value)
+    self.assertEqual(values, ['bar', 'boom'])
+
   def test_find_key(self):
     self.assertEqual('foo' in self.my_dict, True)
     self.assertEqual(self.my_dict.get('foo'), 'bar')
@@ -21,7 +47,7 @@ class TestDict(unittest.TestCase):
     dict2 = {}
     dict2['a'] = 'b'
 
-    print(dict2)
+    # print(dict2)
     self.assertEqual(list(dict2.keys()), ['a'])
 
   def test_append_list(self):
@@ -50,5 +76,5 @@ class TestDict(unittest.TestCase):
     }
 
     my_dict['spy']['c'].append('foo')
-    print(my_dict)
+    # print(my_dict)
     self.assertEqual(my_dict['spy']['c'], ['foo'])
