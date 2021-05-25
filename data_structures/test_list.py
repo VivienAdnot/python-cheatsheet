@@ -79,6 +79,16 @@ class TestList(unittest.TestCase):
     arr = [2,3,4,5,6]
     self.assertEqual(sum(arr), 20)
 
+  def test_sort_tuple_asc(self):
+    data = [(4,5,6), (1,2,3), (7,8,9)]
+    sorted_by_second = sorted(data, key=lambda tup: tup[2])
+    self.assertEqual(sorted_by_second, [(1,2,3), (4,5,6), (7,8,9)])
+
+  def test_sort_tuple_desc(self):
+    data = [(4,5,6), (1,2,3), (7,8,9)]
+    sorted_by_second = sorted(data, key=lambda tup: tup[2], reverse=True)
+    self.assertEqual(sorted_by_second, [(7,8,9), (4,5,6), (1,2,3)])
+
 class TestListComprehension(unittest.TestCase):
   def test_square(self):
     square = [x**2 for x in range(5)]
