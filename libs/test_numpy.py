@@ -29,3 +29,9 @@ class TestNumpy:
     largest_indices, largest_values = get_3_max_values(values)
     assert_array_equal(largest_values, [9.01, 10.48, 13.58])
     assert_array_equal(largest_indices, [10, 7, 4])
+
+  # cumsum add the current element of array with previous element
+  def test_cumsum(self):
+    values = [4, 6, 12]
+    expected_result = [4, 4+6, 4+6+12] # [4, 10, 22]
+    assert_array_equal(np.cumsum(values), expected_result)
