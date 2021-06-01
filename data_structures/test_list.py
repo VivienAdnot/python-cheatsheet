@@ -89,6 +89,11 @@ class TestList(unittest.TestCase):
     sorted_by_second = sorted(data, key=lambda tup: tup[2], reverse=True)
     self.assertEqual(sorted_by_second, [(7,8,9), (4,5,6), (1,2,3)])
 
+  def test_clear(self):
+    arr = [2,3,4,5,6]
+    arr.clear()
+    self.assertEqual(arr, [])
+
 class TestListComprehension(unittest.TestCase):
   def test_square(self):
     square = [x**2 for x in range(5)]
