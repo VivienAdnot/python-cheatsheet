@@ -1,14 +1,10 @@
 import datetime
 import unittest
-import numpy as np
+from freezegun import freeze_time
 
 def convert_month_index_to_string(month_index):
   return datetime.date(1900, month_index, 1).strftime('%B')
 
-# base = datetime.datetime(2005, 2, 1)
-# dates = np.array(
-#   [base + datetime.timedelta(hours=(2 * i)) for i in range(732)]
-# )
 def create_date_array(start, length):
   # return np.array(
   #   [start + datetime.timedelta(days=i) for i in range(length)]
@@ -16,16 +12,11 @@ def create_date_array(start, length):
   return [start + datetime.timedelta(days=i) for i in range(length)]
 
 class TestDate(unittest.TestCase):
-  # def test_get_current_date(self):
-  #   today = date.today()
-  #   self.assertEqual(today.year, 2021)
-  #   self.assertEqual(today.month, 5)
-    # self.assertEqual(today.day, 22)
-
+  @freeze_time("2022-07-01")
   def test_get_15_years_ago(self):
     today = datetime.date.today()
     year_15_ago = today.year - 15
-    self.assertEqual(year_15_ago, 2006)
+    self.assertEqual(year_15_ago, 2007)
 
   def test_get_month_string_from_int(self):
     self.assertEqual(convert_month_index_to_string(1), 'January')

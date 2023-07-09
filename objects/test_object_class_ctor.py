@@ -5,7 +5,6 @@ class Portfolio:
   lines: List[int] = []
 
   def __init__(self, lines = None):
-    # print(lines)
     self.lines = lines if lines else []
 
   def add(self, value):
